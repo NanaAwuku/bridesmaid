@@ -67,8 +67,8 @@
   .eyebrow {
     font-family: var(--font-label);
     text-transform: uppercase;
-    letter-spacing: 0.44em;
-    font-size: 0.7rem;
+    letter-spacing: 0.34em;
+    font-size: clamp(0.82rem, 3.4vw, 0.9rem);
     font-weight: 600;
     color: var(--orange-glow);
     margin: 0 0 1.6rem;
@@ -133,8 +133,8 @@
     transform: translateX(-50%);
     z-index: 3;
     font-family: var(--font-label);
-    font-size: 0.6rem;
-    letter-spacing: 0.42em;
+    font-size: clamp(0.74rem, 3.2vw, 0.8rem);
+    letter-spacing: 0.32em;
     text-transform: uppercase;
     color: var(--gold-soft);
     display: flex;
@@ -212,7 +212,7 @@
 
   footer { text-align: center; padding: 2rem 1.4rem 4rem; position: relative; z-index: 2; }
   footer .heart { color: var(--wine-bright); font-size: 1.1rem; }
-  footer p { margin: 0.5rem auto; font-size: 0.82rem; color: var(--gold-soft); font-family: var(--font-label); letter-spacing: 0.18em; text-transform: uppercase; }
+  footer p { margin: 0.5rem auto; font-size: clamp(0.82rem, 3.4vw, 0.9rem); color: var(--gold-soft); font-family: var(--font-label); letter-spacing: 0.16em; text-transform: uppercase; }
 
   /* ---------- opening gate (tap-to-open envelope) ---------- */
   body.locked { overflow: hidden; height: 100vh; }
@@ -246,15 +246,15 @@
   .gate-eyebrow {
     font-family: var(--font-label);
     text-transform: uppercase;
-    letter-spacing: 0.44em;
-    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    font-size: clamp(0.82rem, 3.6vw, 0.9rem);
     font-weight: 600;
     color: var(--orange-glow);
     margin: 0;
   }
   .gate-names {
     font-family: var(--font-script);
-    font-size: clamp(2rem, 8vw, 3.4rem);
+    font-size: clamp(2.4rem, 10vw, 3.6rem);
     line-height: 1;
     color: var(--blush);
     margin: 0;
@@ -262,8 +262,8 @@
   .gate-hint {
     font-family: var(--font-label);
     text-transform: uppercase;
-    letter-spacing: 0.34em;
-    font-size: 0.66rem;
+    letter-spacing: 0.26em;
+    font-size: clamp(0.86rem, 3.8vw, 0.94rem);
     color: var(--gold-soft);
     margin: 0;
     animation: hintpulse 2.2s ease-in-out infinite;
@@ -335,7 +335,7 @@
     display: flex; align-items: center; justify-content: center;
     font-family: var(--font-display);
     color: var(--gold);
-    font-size: 0.92rem;
+    font-size: clamp(1rem, 4vw, 1.15rem);
     letter-spacing: 0.04em;
     transition: transform 0.6s var(--ease), opacity 0.5s var(--ease);
   }
