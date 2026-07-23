@@ -65,10 +65,8 @@ DIDOT = "/System/Library/Fonts/Supplemental/Didot.ttc"
 SNELL = "/System/Library/Fonts/Supplemental/SnellRoundhand.ttc"
 FUTURA = "/System/Library/Fonts/Supplemental/Futura.ttc"
 
-f_eyebrow = F(FUTURA, 24)
-f_names = F(SNELL, 60)
-f_q = F(DIDOT, 92)
-f_seal = F(DIDOT, 30)
+f_eyebrow = F(FUTURA, 26)
+f_q = F(DIDOT, 96)
 
 GOLD = (231, 196, 140)
 ORANGE = (237, 160, 97)
@@ -86,21 +84,24 @@ def center_text(y, text, font, fill, tracking=0):
     return total
 
 # --- eyebrow ---
-center_text(int(0.20 * H * SS), "YOU'RE INVITED", f_eyebrow, ORANGE, tracking=10)
+center_text(int(0.24 * H * SS), "YOU'RE INVITED", f_eyebrow, ORANGE, tracking=11)
 
-# --- wax seal ---
-scx, scy, sr = W * SS // 2, int(0.375 * H * SS), 52 * SS
+# --- wax seal with a heart ---
+scx, scy, sr = W * SS // 2, int(0.42 * H * SS), 54 * SS
 d.ellipse([scx - sr, scy - sr, scx + sr, scy + sr], fill=(110, 29, 46))
 d.ellipse([scx - sr, scy - sr, scx + sr, scy + sr], outline=GOLD, width=2 * SS)
-sb = d.textbbox((0, 0), "A&A", font=f_seal)
-d.text((scx - (sb[2] - sb[0]) / 2, scy - (sb[3] - sb[1]) / 2 - sb[1]), "A&A", font=f_seal, fill=GOLD)
-
-# --- names (script) ---
-nb = d.textbbox((0, 0), "Adwoa & Abeiku", font=f_names)
-center_text(int(0.50 * H * SS), "Adwoa & Abeiku", f_names, BLUSH)
+# parametric heart, gold
+scale = 1.7 * SS
+hpts = []
+for i in range(0, 361, 4):
+    t = math.radians(i)
+    hx = scx + scale * 16 * (math.sin(t) ** 3)
+    hy = scy - scale * (13 * math.cos(t) - 5 * math.cos(2 * t) - 2 * math.cos(3 * t) - math.cos(4 * t)) + 4 * SS
+    hpts.append((hx, hy))
+d.polygon(hpts, fill=GOLD)
 
 # --- the question (gilded) ---
-center_text(int(0.66 * H * SS), "Will you be my bridesmaid?", f_q, GOLD)
+center_text(int(0.62 * H * SS), "Will you be my bridesmaid?", f_q, GOLD)
 
 # --- downsample ---
 final = img.resize((W, H), Image.LANCZOS)
